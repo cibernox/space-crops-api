@@ -1,0 +1,2 @@
+class CropSample < ApplicationRecord
+end
