@@ -12,7 +12,8 @@
 
 ActiveRecord::Schema.define(version: 2019_09_13_151210) do
 
-  create_table "crop_samples", force: :cascade do |t|
+  create_table "crops", force: :cascade do |t|
+    t.string "crop_type"
     t.string "name"
     t.integer "avg_height"
     t.string "health"
