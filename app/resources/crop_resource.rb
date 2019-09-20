@@ -1,10 +1,5 @@
 class CropResource < JSONAPI::Resource
-  attribute :name
-  attribute :crop_type
-  attribute :avg_height
-  attribute :health
-  attribute :food_production
-  has_one :crop_care
-
+  attributes :name, :crop_type, :avg_height, :health, :food_production
+  relationship :crop_care, to: :one
   filters :crop_type
 end
