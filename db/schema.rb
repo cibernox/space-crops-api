@@ -12,8 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2019_09_20_160140) do
 
-  create_table "crop_cares", force: :cascade do |t|
-    t.integer "crop_id"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
+  enable_extension "plpgsql"
+
+  create_table "crop_cares", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "crop_id"
     t.integer "water"
     t.string "fertilizer_type"
     t.integer "fertilizer_amount"
@@ -23,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_09_20_160140) do
     t.index ["crop_id"], name: "index_crop_cares_on_crop_id"
   end
 
-  create_table "crops", force: :cascade do |t|
+  create_table "crops", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "crop_type"
     t.string "name"
     t.integer "avg_height"

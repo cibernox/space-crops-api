@@ -2,7 +2,7 @@
 
 class CreateCropSamples < ActiveRecord::Migration[5.2]
   def change
-    create_table :crops do |t|
+    create_table :crops, id: :uuid  do |t|
       t.string :crop_type
       t.string :name
       t.integer :avg_height
