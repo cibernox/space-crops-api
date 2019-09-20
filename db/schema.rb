@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_13_151210) do
+ActiveRecord::Schema.define(version: 2019_09_20_160140) do
+
+  create_table "crop_cares", force: :cascade do |t|
+    t.integer "crop_id"
+    t.integer "water"
+    t.string "fertilizer_type"
+    t.integer "fertilizer_amount"
+    t.integer "light"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crop_id"], name: "index_crop_cares_on_crop_id"
+  end
 
   create_table "crops", force: :cascade do |t|
     t.string "crop_type"

@@ -4,6 +4,7 @@ class CropResource < JSONAPI::Resource
   attribute :avg_height
   attribute :health
   attribute :food_production
+  has_one :crop_care
 
   filters :crop_type
 end

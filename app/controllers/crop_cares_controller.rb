@@ -1,0 +1,2 @@
+class CropCaresController < ApplicationController
+end
