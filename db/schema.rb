@@ -17,14 +17,13 @@ ActiveRecord::Schema.define(version: 2019_09_20_160140) do
   enable_extension "plpgsql"
 
   create_table "crop_cares", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "crop_id"
+    t.uuid "crop_id"
     t.integer "water"
     t.string "fertilizer_type"
     t.integer "fertilizer_amount"
     t.integer "light"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["crop_id"], name: "index_crop_cares_on_crop_id"
   end
 
   create_table "crops", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -37,4 +36,5 @@ ActiveRecord::Schema.define(version: 2019_09_20_160140) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "crop_cares", "crops"
 end
