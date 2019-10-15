@@ -10,21 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_20_160140) do
+ActiveRecord::Schema.define(version: 2019_10_15_121349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
-
-  create_table "crop_cares", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "crop_id"
-    t.integer "water"
-    t.string "fertilizer_type"
-    t.integer "fertilizer_amount"
-    t.integer "light"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "crops", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "crop_type"
@@ -34,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_09_20_160140) do
     t.integer "food_production"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "cares", default: "{}", null: false
   end
 
-  add_foreign_key "crop_cares", "crops"
 end
